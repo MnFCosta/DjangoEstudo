@@ -1,10 +1,14 @@
 <header class="main-header-container">
     <div class="main-header container">
         <h1>    
-            <a class="main-logo" href="/">
+            <a class="main-logo" href="{% url 'recipes:home' %}">
                 <i class="fa-brands fa-python main-logo-icon"></i>
                 <span class="main-logo-text">
-                    {{ name }}
+                    {% if is_detail_page %}
+                        Receita do usuário {{recipe.author.first_name}}
+                    {% else %}
+                        Receitas 
+                    {% endif %}
                 </span> 
             </a>
         </h1>
