@@ -4,6 +4,8 @@
 <head>
     {% include 'recipes/partials/head.html'%}
     <title>{% block title %}{% endblock title %}</title>    
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -14,7 +16,7 @@
         {% block content %}{% endblock content %}
     </main>
 
-    {% include 'recipes/partials/_footer.html'%}
+    {% include 'recipes/partials/_contentless_footer.html'%}
 </body>
 
 </html>
