@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
+from django.contrib import messages
 from utils.recipes.factory import make_recipe
 from recipes.models import Recipe
 from django.http import Http404
@@ -13,10 +14,17 @@ def view(request):
     
     if recipes: 
         base_template = "global/base.html"
+        if len(recipes) == 1:
+            messages.success(request, f'{len(recipes)} receita encontradas!')
+        else:
+            messages.success(request, f'{len(recipes)} receitas encontradas!')
     else:
         base_template = "global/base_contentless.html"
+        messages.error(request, 'SEM RECEITAS!')
 
-    return render(request, 'recipes/pages/prefeitura.html', context={
+    
+
+    return render(request, 'recipes/pages/home.html', context={
         "recipes": recipes,
         "template": base_template,
     })
