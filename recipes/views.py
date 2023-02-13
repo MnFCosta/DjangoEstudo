@@ -3,9 +3,13 @@ from django.contrib import messages
 from utils.recipes.factory import make_recipe
 from recipes.models import Recipe
 from django.http import Http404
+from django.shortcuts import redirect
 
 # Create your views here.
 
+i = 0
+n1 = 1
+n2 = 6
 
 def view(request):
     recipes = Recipe.objects.filter(
@@ -22,14 +26,18 @@ def view(request):
         base_template = "global/base_contentless.html"
         messages.error(request, 'SEM RECEITAS!')
 
-    
-
     return render(request, 'recipes/pages/home.html', context={
         "recipes": recipes,
         "template": base_template,
     })
 
 def teste(request):
+    global n1
+    global n2
+    
+    n1 += 5
+    n2 += 5
+
     recipes = Recipe.objects.filter(
         is_published=True
     ).order_by("-id")
@@ -39,16 +47,19 @@ def teste(request):
     else:
         base_template = "global/base_contentless.html"
 
+    iterator = range(n1,n2)
+
+
     return render(request, 'recipes/pages/prefeitura.html', context={
         "recipes": recipes,
         "template": base_template,
-        'iterator':range(1,6),
+        'iterator': iterator,
     })
-
+    
 
 def category(request, category_id):
     #Queryset e erro 404 feito sem shortcut
-    """ recipes = Recipe.objects.filter(
+    """ recipes = Recipe.objects.filter(    
         category__id=category_id,
         is_published=True,
         ).order_by("-id")

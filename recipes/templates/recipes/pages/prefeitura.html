@@ -2,11 +2,10 @@
 {% block title %} Home {% endblock title %}
 {% load static %}
 {% block content %}
-<div class="main-content container">
-    {% for recipe in recipes%}
-    {%include 'recipes/partials/_recipes.html'%}
-    {% empty %}
-    <div class="folha"> 
+<div id="teste" class="main-content container">
+    <div class = "main-content container center">
+        <a href="">PROXIMO</a>
+    </div>
     {% for i in iterator%}
         <div class="tabela-container">
             <table class="tabela1">
@@ -78,7 +77,5 @@
             </table>
         </div>
         {% endfor %}
-        {% endfor %}
-    </div>
     </div>
 {% endblock content %}
