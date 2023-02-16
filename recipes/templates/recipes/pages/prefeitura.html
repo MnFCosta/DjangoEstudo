@@ -3,79 +3,86 @@
 {% load static %}
 {% block content %}
 <div id="teste" class="main-content container">
-    <div class = "main-content container center">
-        <a href="">PROXIMO</a>
+    <div class="main-content container center">
+        {% include 'recipes/partials/_messages.html' %}
+        <a class="generic-button" href="{% url 'recipes:diminuir' %}"> DIMINUIR </a>
+        <a class="generic-button" href="{% url 'recipes:reset' %}"> RESETAR </a>
+        <a class="generic-button" href="{% url 'recipes:aumentar' %}"> AUMENTAR </a>
+        <a class="generic-button" href="{% url 'recipes:foto' %}"> FOTO </a>
     </div>
-    {% for i in iterator%}
-        <div class="tabela-container">
-            <table class="tabela1">
-                <tr>
-                    <td class="celula_inscricao">
-                        <div class="numins">Inscrição nº</div><br>
-                        <div class="num">{{i}}</div>
+    <div class="button-container">   
+        {% for i in iterator%}
+            <div class="tabela-container">
+                <table class="tabela1">
+                    <tr>
+                        <td class="celula_inscricao">
+                            <div class="numins">Inscrição nº</div><br>
+                            <div class="num">{{i}}</div>
 
-                    </td>
-                    <td class="celula_titulo">Caminhada da Mulher</td>
-                <tr>
-                    <td class="celula_assinatura">
-                        <div class="assinar">
-                            Nome: <br>
-                        </div>
-                        <div class="assinar2">
-                            Idade: <br>
-                        </div>
-                        <div class="assinar2">
-                            Bairro: <br>
-                        </div>
-                        <div class="assinar2">
-                            Telefone: <br>
-                        </div>
-                        <div class="assinar2">
-                            CPF:
-                        </div>
-                        <br>
-                        <div class="justify">
-                            <span>Eu declaro estar em boas condições de saúde</span><br>
-                            <span> para praticar atividade física.</span>
-                        </div>
-                        <br>
-                        Ass:<span class="line"> ___________________________________________________</span>
-                    </td>
-                </tr>
-            </table>
-            <table class="tabela2">
-                <tr>
-                    <td>
-                        <img class="imagem" src="{% static 'recipes/images/suas.png' %} " alt="logo1">
-                        <img class="imagem2" src="{% static 'recipes/images/prefieturasusas.png' %}" alt="">
-                        <img class="imagem3" src="{% static 'recipes/images/logprefeitura.png' %}" alt="">
-                        <div class="numinscricao">
-                            <b>Inscrição nº {{i}}</b>
-                        </div>
-                        <div class="text">
-                            Caminhada da Mulher
-                        </div>
+                        </td>
+                        <td class="celula_titulo">Caminhada da Mulher</td>
+                    <tr>
+                        <td class="celula_assinatura">
+                            <div class="assinar">
+                                Nome: <br>
+                            </div>
+                            <div class="assinar2">
+                                Idade: <br>
+                            </div>
+                            <div class="assinar2">
+                                Bairro: <br>
+                            </div>
+                            <div class="assinar2">
+                                Telefone: <br>
+                            </div>
+                            <div class="assinar2">
+                                CPF:
+                            </div>
+                            <br>
+                            <div class="justify">
+                                <span>Eu declaro estar em boas condições de saúde</span><br>
+                                <span> para praticar atividade física.</span>
+                            </div>
+                            <br>
+                            Ass:<span class="line"> ___________________________________________________</span>
+                        </td>
+                    </tr>
+                </table>
+                <table class="tabela2">
+                    <tr>
+                        <td>
+                            <img class="imagem" src="{% static 'recipes/images/suas.png' %} " alt="logo1">
+                            <img class="imagem2" src="{% static 'recipes/images/prefieturasusas.png' %}" alt="">
+                            <img class="imagem3" src="{% static 'recipes/images/logprefeitura.png' %}" alt="">
+                            <div class="numinscricao">
+                                <b>Inscrição nº {{i}}</b>
+                            </div>
+                            <div class="text">
+                                Caminhada da Mulher
+                            </div>
 
-                        <div class="text">
-                            DATA: 19/03/2023
-                        </div>
+                            <div class="text">
+                                DATA: 19/03/2023
+                            </div>
 
-                        <div class="text">
-                            HORÁRIO DE INÍCIO: 8h
-                        </div>
+                            <div class="text">
+                                HORÁRIO DE INÍCIO: 7:30
+                            </div>
 
-                        <div class="text">
-                            LOCAL: Estádio Municipal Benedito Therézio de Carvalho Júnior
-                            (Ditão)
-                        </div>
+                            <div class="text">
+                                LOCAL: Estádio Municipal Benedito Therézio de Carvalho Júnior
+                                (Ditão)
+                            </div>
 
-                        <div class="text">
-                            OBS: Obrigatória a apresentação deste para retirada do kit!
-                        </div>
-                    </td>
-                </tr>
-            </table>
+                            <div class="text">
+                                OBS: Obrigatória a apresentação deste para retirada do kit!
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            {% endfor %}
+            </div>
         </div>
-        {% endfor %}
-    </div>
+
 {% endblock content %}

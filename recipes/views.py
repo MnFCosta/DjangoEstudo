@@ -1,13 +1,18 @@
+import os
+import time
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.contrib import messages
 from utils.recipes.factory import make_recipe
 from recipes.models import Recipe
 from django.http import Http404
 from django.shortcuts import redirect
+from selenium import webdriver
+from utils.recipes.screenshot import screenshot_right
 
 # Create your views here.
 
 i = 0
+
 n1 = 1
 n2 = 6
 
@@ -32,12 +37,6 @@ def view(request):
     })
 
 def teste(request):
-    global n1
-    global n2
-    
-    n1 += 5
-    n2 += 5
-
     recipes = Recipe.objects.filter(
         is_published=True
     ).order_by("-id")
@@ -55,6 +54,35 @@ def teste(request):
         "template": base_template,
         'iterator': iterator,
     })
+
+def screenshot(request):
+    screenshot_right()
+    return redirect("recipes:teste")
+
+def reset(request):
+    global n1
+    global n2
+    n1 = 1
+    n2 = 6
+    return redirect("recipes:teste")
+
+def aumento(request):
+    global n1
+    global n2
+    n1 += 5
+    n2 += 5
+    return redirect("recipes:teste")
+
+def diminui(request):
+    global n1
+    global n2
+    if n1 != 1:
+        n1 -= 5
+        n2 -= 5
+    else:
+        messages.error(request, 'NÃO EXISTE INSCRIÇÃO NEGATIVA!')
+    return redirect("recipes:teste")
+
     
 
 def category(request, category_id):
